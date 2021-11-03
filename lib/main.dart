@@ -3,21 +3,19 @@ import 'package:multi-book-app/pages/main_screen.dart';
 import 'package:multi-book-app/pages/profileScreenCreator.dart';
 
 void main() {
-  runApp( MaterialApp(
-   
-
+  runApp(MaterialApp(
     initialRoute: '/',
-    
-    routes:{
-      '/':(context)=>   MainScreen(),
+    routes: {
+      '/': (context) => MainScreen(),
       //       title'/login':(context)=>  LoginScreen(),
-      '/profile':(context)=>  creatorProfilePage(),
-      '/wallet':(context)=>  MainScreen(),
-      '/create':(context)=>  MainScreen(),
-
+      '/profile': (context) => creatorProfilePage(),
+      '/wallet': (context) => MainScreen(),
+      '/create': (context) => MainScreen(),
     },
   ));
 }
+
+// update ui
 
   //runApp(MyApp());
 //}
