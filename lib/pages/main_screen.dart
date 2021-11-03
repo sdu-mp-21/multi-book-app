@@ -205,11 +205,23 @@ class _MainScreenState extends State<MainScreen> {
             ],
           ),
         ),
-        postTemplate(posts[0]),
-        postTemplate(posts[0]),
-        postTemplate(posts[0]),
-        postTemplate(posts[0]),
-        postTemplate(posts[0]),
+        StreamBuilder( 
+            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.hasData) {
+            return const CircularProgressIndicator();
+          } else {
+            return Column(
+              children: [
+                postTemplate(posts[0]),
+                postTemplate(posts[0]),
+                postTemplate(posts[0]),
+                postTemplate(posts[0]),
+                postTemplate(posts[0]),
+              ],
+            );
+          }
+        }),
+        
       ]),
 
       //
@@ -302,48 +314,45 @@ class _MainScreenState extends State<MainScreen> {
 
   void _showSelectedByCategory(String value) {
     setState(() {
-
-   
-    if (value == 'NEW') {
-      posts = [
-        Post(
-            author: "RAM",
-            description: "Something",
-            book: const Image(
-              image: NetworkImage(
-                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-              width: 80,
-            ),
-            nameBook: "Lalisa")
-      ];
-    }
-    if (value == 'TOP') {
-      posts = [
-        Post(
-            author: "Nezuko",
-            description: "Something",
-            book: const Image(
-              image: NetworkImage(
-                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-              width: 80,
-            ),
-            nameBook: "IU")
-      ];
-    }
-    if (value == 'Mostly readed') {
-      posts = [
-        Post(
-            author: "Naruto",
-            description: "Something",
-            book: const Image(
-              image: NetworkImage(
-                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-              width: 80,
-            ),
-            nameBook: "Sasuke")
-      ];
-      
-    }
-  });
+      if (value == 'NEW') {
+        posts = [
+          Post(
+              author: "RAM",
+              description: "Something",
+              book: const Image(
+                image: NetworkImage(
+                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                width: 80,
+              ),
+              nameBook: "Lalisa")
+        ];
+      }
+      if (value == 'TOP') {
+        posts = [
+          Post(
+              author: "Nezuko",
+              description: "Something",
+              book: const Image(
+                image: NetworkImage(
+                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                width: 80,
+              ),
+              nameBook: "IU")
+        ];
+      }
+      if (value == 'Mostly readed') {
+        posts = [
+          Post(
+              author: "Naruto",
+              description: "Something",
+              book: const Image(
+                image: NetworkImage(
+                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                width: 80,
+              ),
+              nameBook: "Sasuke")
+        ];
+      }
+    });
   }
 }
