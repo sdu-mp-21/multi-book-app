@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
                Container(
                  margin:const EdgeInsets.symmetric(vertical:25,horizontal:0),
                  alignment: Alignment.center,
-                 child:const Text("Welcome to MultiApp",
+                 child:const Text("Welcome to A",
                    style: TextStyle(
                      fontSize:25,
                    ),
@@ -57,7 +57,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     margin: const EdgeInsets.symmetric(
                       vertical: 25, horizontal: 15),
                     child: ElevatedButton(
-                      onPressed: () {}, child: const Text('Login')),
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+
+                      }, child: const Text('Login')),
                   ),
                   Container(
                     child: ElevatedButton(
