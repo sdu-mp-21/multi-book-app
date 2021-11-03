@@ -9,7 +9,7 @@ void main() {
     initialRoute: '/',
     
     routes:{
-      '/':(context)=>  MainScreen(),
+      '/':(context)=>   MainScreen(),
       //       title'/login':(context)=>  LoginScreen(),
       '/profile':(context)=>  creatorProfilePage(),
       '/wallet':(context)=>  MainScreen(),
