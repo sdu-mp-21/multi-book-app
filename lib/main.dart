@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/pages/login_screen.dart';
 import 'package:multi-book-app/pages/main_screen.dart';
 import 'package:multi-book-app/pages/profileScreenCreator.dart';
 
@@ -6,13 +7,12 @@ void main() {
   runApp( MaterialApp(
    
 
-    initialRoute: '/',
-    
+    initialRoute: '/login',
     routes:{
       '/':(context)=>   MainScreen(),
       //       title'/login':(context)=>  LoginScreen(),
       '/profile':(context)=>  creatorProfilePage(),
-      '/wallet':(context)=>  MainScreen(),
+      '/login':(context)=>  LoginScreen(),
       '/create':(context)=>  MainScreen(),
 
     },
