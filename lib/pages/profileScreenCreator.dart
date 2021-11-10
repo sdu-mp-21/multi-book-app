@@ -1,6 +1,9 @@
 
 
+// ignore_for_file: duplicate_import
+
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/model/constants.dart';
 import 'package:multi-book-app/model/creator.dart';
 import 'package:multi-book-app/profileScreenWidget/appbar_widget.dart';
 import 'package:multi-book-app/profileScreenWidget/button_widget.dart';
@@ -11,6 +14,7 @@ import 'package:multi-book-app/profileScreenWidget/appbar_widget.dart';
 import 'package:multi-book-app/profileScreenWidget/button_widget.dart';
 import 'package:multi-book-app/profileScreenWidget/numbers_widget.dart';
 import 'package:multi-book-app/profileScreenWidget/profile_widget.dart';
+
 
 class creatorProfilePage extends StatefulWidget {
   @override
@@ -49,23 +53,23 @@ class _creatorProfilePageState extends State<creatorProfilePage> {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.black),
+            icon: Icon(Icons.home, color: primaryColor),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search, color: Colors.black),
+            icon: Icon(Icons.search, color: primaryColor),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_box, color: Colors.black),
+            icon: Icon(Icons.add_box, color: primaryColor),
             label: 'Create',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet, color: Colors.black),
+            icon: Icon(Icons.account_balance_wallet, color: primaryColor),
             label: 'Wallet',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.black),
+            icon: Icon(Icons.person, color: primaryColor),
             label: 'Profile',
           ),
         ],
