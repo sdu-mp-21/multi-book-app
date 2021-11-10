@@ -1,4 +1,7 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/pages/login_screen.dart';
 import 'package:multi-book-app/pages/main_screen.dart';
 import 'package:multi-book-app/pages/profileScreenCreator.dart';
 
@@ -10,9 +13,10 @@ void main() {
     
     routes:{
       '/':(context)=>  MainScreen(),
-      //       title'/login':(context)=>  LoginScreen(),
+            // title'/login':(context)=>  LoginScreen(),
       '/profile':(context)=>  creatorProfilePage(),
-      '/wallet':(context)=>  MainScreen(),
+      '/login': (context)=> LoginScreen(),
+      // '/wallet':(context)=>  MainScreen(),
       '/create':(context)=>  MainScreen(),
 
     },
