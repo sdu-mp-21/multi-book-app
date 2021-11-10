@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class Post {
@@ -5,5 +7,14 @@ class Post {
   String description;
   Image book;
   String nameBook;
-  Post({required this.author, required this.description, required this.book, required this.nameBook,});
+  Post({
+    required this.author,
+    required this.description,
+    required this.book,
+    required this.nameBook,
+  });
+
+  List<Post>? readJSON() {
+    return null;
+  }
 }
