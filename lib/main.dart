@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       '/profile':(context)=>  ProfilePage(),
       '/login':(context)=>  LoginScreen(),
       '/create':(context)=>  MainScreen(),
-    }
+    },
           debugShowCheckedModeBanner: false,
           theme: ThemeProvider.of(context),
           title: title,
@@ -49,3 +49,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
