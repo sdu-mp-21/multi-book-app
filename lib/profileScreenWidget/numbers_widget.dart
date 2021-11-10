@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 class NumbersWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          buildButton(context, '3.8', 'Ranking'),
-          buildDivider(),
-          buildButton(context, '3', 'Following'),
-          buildDivider(),
-          buildButton(context, '5', 'Followers'),
-        ],
-      );
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      buildButton(context, '4.8', 'Ranking'),
+      buildDivider(),
+      buildButton(context, '35', 'Following'),
+      buildDivider(),
+      buildButton(context, '50', 'Followers'),
+    ],
+  );
   Widget buildDivider() => Container(
-        height: 24,
-        child: VerticalDivider(),
-      );
+    height: 24,
+    child: VerticalDivider(),
+  );
 
   Widget buildButton(BuildContext context, String value, String text) =>
       MaterialButton(
