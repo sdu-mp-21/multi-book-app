@@ -1,44 +1,52 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/multipages/show_page.dart';
 import 'package:multi-book-app/pages/login_screen.dart';
 import 'package:multi-book-app/pages/main_screen.dart';
 import 'package:multi-book-app/pages/profileScreenCreator.dart';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:flutter/services.dart';
+import 'package:multi-book-app/pages/profileScreenCreator.dart';
+import 'package:multi-book-app/themes.dart';
+import 'package:multi-book-app/utils/creator_preferences.dart';
 
-void main() {
-  runApp( MaterialApp(
-   
 
-    initialRoute: '/',
-    
-    routes:{
-      '/':(context)=>  MainScreen(),
-            // title'/login':(context)=>  LoginScreen(),
-      '/profile':(context)=>  creatorProfilePage(),
-      '/login': (context)=> LoginScreen(),
-      // '/wallet':(context)=>  MainScreen(),
-      '/create':(context)=>  MainScreen(),
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
-    },
-  ));
+  await creatorPreferences.init();
 }
 
-  //runApp(MyApp());
-//}
+class MyApp extends StatelessWidget {
+  static final String title = 'Creator Profile';
 
-// class MyApp extends StatelessWidget {
-//   static final String title = 'User Profile';
+  @override
+  Widget build(BuildContext context) {
+    final user = creatorPreferences.getCreator();
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         primaryColor: Colors.blue.shade300,
-//         dividerColor: Colors.black,
-//       ),
-//       title: title,
-//       home: creatorProfilePage(),
-//     );
-//   }
-// }
+    return ThemeProvider(
+      initTheme: user.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
+      child: Builder(
+        builder: (context) => MaterialApp(
+          initialRoute: '/login',
+    routes:{
+      '/':(context)=>   MainScreen(),
+      //       title'/login':(context)=>  LoginScreen(),
+      '/profile':(context)=>  ProfilePage(),
+      '/login':(context)=>  LoginScreen(),
+      '/create':(context)=>  MainScreen(),
+    },
+          debugShowCheckedModeBanner: false,
+          theme: ThemeProvider.of(context),
+          title: title,
+          //home: ProfilePage(),
+
+        ),
+      ),
+    );
+  }
+}
+
