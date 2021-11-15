@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
       child: Builder(
         builder: (context) => MaterialApp(
           initialRoute: '/login',
+
           routes: {
             '/': (context) =>  MainScreen(),
             //       title'/login':(context)=>  LoginScreen(),
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
             '/login': (context) => LoginScreen(),
             '/create': (context) => MainScreen(),
           },
+
           debugShowCheckedModeBanner: false,
           theme: ThemeProvider.of(context),
           title: title,
@@ -51,3 +53,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
