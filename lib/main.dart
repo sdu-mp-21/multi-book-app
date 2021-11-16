@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/pages/login.dart';
 import 'dart:io';
 
 import 'package:multi-book-app/pages/login_screen.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/services.dart';
 
 import 'package:multi-book-app/themes.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
-
+var user ;
 Future main()  async{
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
@@ -28,19 +29,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = creatorPreferences.getCreator();
+    user = creatorPreferences.getCreator();
 
     return ThemeProvider(
       initTheme: user.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
       child: Builder(
         builder: (context) => MaterialApp(
+          
+        
           initialRoute: '/login',
 
           routes: {
             '/': (context) =>  MainScreen(),
             //       title'/login':(context)=>  LoginScreen(),
             '/profile': (context) => ProfilePage(),
-            '/login': (context) => LoginScreen(),
+            '/login': (context) => LoginPage(),
             '/create': (context) => MainScreen(),
           },
 

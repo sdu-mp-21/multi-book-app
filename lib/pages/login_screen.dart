@@ -13,6 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -63,7 +64,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Container(
                         child: ElevatedButton(
-                            onPressed: () {}, child: const Text('Sign Up')),
+                            onPressed: () {
+                              Navigator.popAndPushNamed(context, '/');
+                              print("push");
+                            },
+                            child: const Text('Sign Up')),
                         margin: const EdgeInsets.symmetric(
                             vertical: 25, horizontal: 15)),
                   ],
@@ -79,7 +84,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
-  
-
 }
