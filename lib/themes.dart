@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/model/constants.dart';
 
 class MyThemes {
   static final primary = Colors.blue;
@@ -10,10 +11,11 @@ class MyThemes {
     accentColor: Colors.blue,
     colorScheme: ColorScheme.dark(primary: primary),
     dividerColor: Colors.white,
+    buttonColor: Colors.white,
   );
 
   static final lightTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.teal,
+    scaffoldBackgroundColor: Colors.white,
     primaryColor: primaryColor,
     colorScheme: ColorScheme.light(primary: primary),
     dividerColor: Colors.black,

@@ -24,9 +24,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   void initState() {
+    creator = creatorPreferences.getCreator();
+
     super.initState();
 
-    creator = creatorPreferences.getCreator();
   }
 
   @override
