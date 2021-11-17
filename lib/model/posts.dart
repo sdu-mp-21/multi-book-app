@@ -1,3 +1,4 @@
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,12 @@ class Post {
   String description;
   Image book;
   String nameBook;
+  int? countOfread;
+  int? id;
+  dynamic data;
+  bool isSelected = false;
+  int countlike = 0;
+
   Post({
     required this.author,
     required this.description,
@@ -13,7 +20,9 @@ class Post {
     required this.nameBook,
   });
 
-  List<Post>? readJSON() {
-    return null;
+  Map<String, dynamic>? readJSON() {
+    String jsonString = '..\\multi-book-app\\lib\\jsonFile\\postList.json';
+    Map<String, dynamic> user = jsonDecode(jsonString);
+    return user;
   }
 }
