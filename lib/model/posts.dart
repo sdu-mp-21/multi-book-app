@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class Post {
@@ -18,7 +20,9 @@ class Post {
     required this.nameBook,
   });
 
-  List<Post>? readJSON() {
-    return null;
+  Map<String, dynamic>? readJSON() {
+    String jsonString = '..\\multi-book-app\\lib\\jsonFile\\postList.json';
+    Map<String, dynamic> user = jsonDecode(jsonString);
+    return user;
   }
 }

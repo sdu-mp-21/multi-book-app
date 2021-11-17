@@ -12,7 +12,7 @@ import 'package:flutter/services.dart';
 import 'package:multi-book-app/themes.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
 var user ;
-Future main()  async{
+Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
