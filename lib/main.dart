@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/multipages/show_page.dart';
 import 'package:multi-book-app/pages/login.dart';
 import 'dart:io';
 
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
             '/profile': (context) => ProfilePage(),
             '/login': (context) => LoginPage(),
             '/create': (context) => MainScreen(),
+           // '/showPage':(context)=> ShowPage(post: post),
           },
 
           debugShowCheckedModeBanner: false,
