@@ -41,7 +41,7 @@ class LoginPage extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      "Welcome back ! Login with your credentials",
+                      "Welcome back !",
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.grey[700],
