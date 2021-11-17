@@ -67,7 +67,9 @@ class _ShowPageState extends State<ShowPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          MaterialButton(
+                        
+                          Text(post.countlike.toString()),
+                            MaterialButton(
                             focusColor: Colors.grey,
                             minWidth: 25,
                             child: const Icon(
@@ -81,7 +83,6 @@ class _ShowPageState extends State<ShowPage> {
                               });
                             },
                           ),
-                          Text(post.countlike.toString()),
                         ],
                       ),
                     ],
@@ -97,7 +98,10 @@ class _ShowPageState extends State<ShowPage> {
             ),
           ),
         ),
-        Card(
+        Container(
+          height:300,
+          
+          child: Card(
           
           child: Row(
             children: [
@@ -153,7 +157,7 @@ class _ShowPageState extends State<ShowPage> {
                   width: MediaQuery.of(context).size.width * 0.20,
                   height: 100,
                   child: Text(
-                    'Audio',
+                    'Manga',
                     style: TextStyle(
                         color: MultiOutlinedButton.getColorBytheme(!post.isSelected)
                             
@@ -161,10 +165,11 @@ class _ShowPageState extends State<ShowPage> {
                   ),
                 ),
               ),
-              
+
             ],
           ),
         ),
+        )
       ]),
     );
   }
