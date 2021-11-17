@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 
 import 'package:multi-book-app/themes.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
+import 'package:multi-book-app/pages/welcome.dart';
 var user ;
 Future main()  async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,13 +38,13 @@ class MyApp extends StatelessWidget {
         builder: (context) => MaterialApp(
           
         
-          initialRoute: '/login',
+          initialRoute: '/welcome',
 
           routes: {
             '/': (context) =>  MainScreen(),
             //       title'/login':(context)=>  LoginScreen(),
             '/profile': (context) => ProfilePage(),
-            '/login': (context) => LoginPage(),
+            '/welcome': (context) => WelcomeScreen(),
             '/create': (context) => MainScreen(),
           },
 

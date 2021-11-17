@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/pages/login.dart';
+import 'package:multi-book-app/pages/signup.dart';
 
 class WelcomeScreen extends StatelessWidget{
   @override
@@ -49,7 +51,7 @@ class WelcomeScreen extends StatelessWidget{
                       minWidth: double.infinity,
                       height: 60,
                       onPressed: (){
-
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
                       },
                     color: Colors.lightBlueAccent,
                     shape: RoundedRectangleBorder(
@@ -71,7 +73,7 @@ class WelcomeScreen extends StatelessWidget{
                     minWidth: double.infinity,
                     height: 60,
                     onPressed: (){
-
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()));
                     },
                     color: Colors.lightBlueAccent,
                     shape: RoundedRectangleBorder(
