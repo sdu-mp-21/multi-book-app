@@ -1,52 +1,171 @@
 import 'package:flutter/material.dart';
 import 'package:multi-book-app/model/constants.dart';
 import 'package:multi-book-app/model/posts.dart';
+import 'package:multi-book-app/inputs/buttons/multi_outlined_button.dart';
+import 'package:multi-book-app/utils/creator_preferences.dart';
 
 class ShowPage extends StatefulWidget {
   Post post;
-  ShowPage({Key? key,  required this.post}) : super(key: key);
+  ShowPage({Key? key, required this.post}) : super(key: key);
 
   @override
+  // ignore: no_logic_in_create_state
   _ShowPageState createState() => _ShowPageState(post: post);
 }
 
 class _ShowPageState extends State<ShowPage> {
+  var user = creatorPreferences.getCreator();
+
   Post post;
-  _ShowPageState({ required this.post});
+  _ShowPageState({required this.post});
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: Card(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Column(
-                    children: [post.book,Text(post.nameBook)],
-                  ),
-                  Column(
+      appBar: AppBar(
+        backgroundColor: primaryColor,
+      ),
+      body: Column(children: [
+        Card(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: 300,
+                          child: post.book,
+                        ),
+                        Text(post.nameBook)
+                      ],
+                    ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 15),
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(post.nameBook),
+                          Text(
+                            post.description,
+                            softWrap: true,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(post.nameBook),
-                      Text(post.description),
-
+                      const Text('readed:8562'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          MaterialButton(
+                            focusColor: Colors.grey,
+                            minWidth: 25,
+                            child: const Icon(
+                              Icons.favorite,
+                              color: primaryColor,
+                              size: 20,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                post.countlike += 1;
+                              });
+                            },
+                          ),
+                          Text(post.countlike.toString()),
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-              const Divider(
-                color: greenColor,
-                thickness: 0.5,
-                endIndent: 15,
-                indent: 15,
-                
-              ),
-            ],
-
+                ),
+                Divider(
+                  color: greenColor,
+                  thickness: 0.5,
+                  endIndent: 15,
+                  indent: 15,
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+        Card(
+          
+          child: Row(
+            children: [
+              MultiOutlinedButton(
+                
+                onPressed: () {
+                  print('Pressed');
+                },
+                name: 'Audio',
+                multiChild: Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  width: MediaQuery.of(context).size.width * 0.20,
+                  height: 100,
+                  child: Text(
+                    'Audio',
+                    style: TextStyle(
+                        color: MultiOutlinedButton.getColorBytheme(!post.isSelected)
+                            
+                            ),
+                  ),
+                ),
+              ),
+              MultiOutlinedButton(
+                
+                onPressed: () {
+                  print('Pressed');
+                },
+                name: 'Audio',
+                multiChild: Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  width: MediaQuery.of(context).size.width * 0.20,
+                  height: 100,
+                  child: Text(
+                    'VIDEO',
+                    style: TextStyle(
+                        color: MultiOutlinedButton.getColorBytheme(!post.isSelected)
+                            
+                            ),
+                  ),
+                ),
+              ),
+              MultiOutlinedButton(
+                
+                onPressed: () {
+                  print('Pressed');
+                },
+                name: 'Manga',
+                multiChild: Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  width: MediaQuery.of(context).size.width * 0.20,
+                  height: 100,
+                  child: Text(
+                    'Audio',
+                    style: TextStyle(
+                        color: MultiOutlinedButton.getColorBytheme(!post.isSelected)
+                            
+                            ),
+                  ),
+                ),
+              ),
+              
+            ],
+          ),
+        ),
+      ]),
     );
   }
 }

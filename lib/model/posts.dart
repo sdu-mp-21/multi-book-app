@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class Post {
@@ -6,6 +5,12 @@ class Post {
   String description;
   Image book;
   String nameBook;
+  int? countOfread;
+  int? id;
+  dynamic data;
+  bool isSelected = false;
+  int countlike = 0;
+
   Post({
     required this.author,
     required this.description,

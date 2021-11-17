@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:multi-book-app/model/constants.dart';
 import 'package:multi-book-app/model/posts.dart';
 import 'package:multi-book-app/multipages/show_page.dart';
+import 'package:multi-book-app/utils/creator_preferences.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -12,8 +13,12 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  var user = creatorPreferences.getCreator();
+
+  // ignore: non_constant_identifier_names
   int _current_index = 0;
-  List<bool> selected_category = [false, false, false];
+  // ignore: non_constant_identifier_names
+  static List<bool> selected_category = [false, false, false];
   List<Post> posts = [
     Post(
       author: "Zero two",
@@ -39,11 +44,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      body: Column(
-        
-        
-        children: [
+      body: Column(children: [
         Container(
           height: 200,
           decoration: BoxDecoration(
@@ -67,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 Container(
                   // width: MediaQuery.of(context).size.width * 0.5,
-                  child: const Divider(
+                  child: Divider(
                     thickness: 1.5,
                     color: greenColor,
                     endIndent: 25,
@@ -150,8 +151,6 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ]),
         ),
-
-        
         Container(
           height: 500,
           child: SingleChildScrollView(
@@ -234,7 +233,6 @@ class _MainScreenState extends State<MainScreen> {
                 post.book,
                 Text(
                   post.nameBook,
-                  style: const TextStyle(color: Colors.black),
                 )
               ])),
           Container(
@@ -257,9 +255,19 @@ class _MainScreenState extends State<MainScreen> {
                 ElevatedButton(
                   onPressed: () {
                     // open showpage
-                   
+                     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ShowPage(post: post,)
+                            
+                            ),
+                        );
+                    
                   },
-                  child: const Text('SHOW'),
+                  child: const Text(
+                    'SHOW',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(greenColor)),
                 )
@@ -316,13 +324,30 @@ class _MainScreenState extends State<MainScreen> {
   }
 
 // Selected Button
+  Color getColorBytheme(bool bln) {
+    Color color = Colors.black;
+    if (bln) {
+      if (user.isDarkMode) {
+        color = Colors.white;
+      } else {
+        color = primaryColor;
+      }
+    } else {
+      if (user.isDarkMode) {
+        color = primaryColor;
+      } else {
+        color = Colors.white;
+      }
+    }
+    return color;
+  }
 
-  OutlinedButton _getOutlined(int index, String name) {
+   OutlinedButton _getOutlined(int index, String name) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         shadowColor: greenColor,
         onSurface: Colors.amber,
-        backgroundColor: (selected_category[index]) ? greenColor : Colors.white,
+        backgroundColor: getColorBytheme(selected_category[index]),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30))),
       ),
@@ -342,8 +367,7 @@ class _MainScreenState extends State<MainScreen> {
         height: 100,
         child: Text(
           name,
-          style: TextStyle(
-              color: (selected_category[index]) ? Colors.white : Colors.black),
+          style: TextStyle(color: getColorBytheme(!selected_category[index])),
         ),
       ),
     );
