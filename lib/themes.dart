@@ -9,9 +9,12 @@ class MyThemes {
     scaffoldBackgroundColor: Colors.grey.shade900,
     primaryColorDark: primaryColor,
     accentColor: Colors.blue,
-    colorScheme: ColorScheme.dark(primary: primary),
+    colorScheme: ColorScheme.dark(primary: primary).copyWith(
+      primary: Colors.white,
+    ),
     dividerColor: Colors.white,
     buttonColor: Colors.white,
+    
   );
 
   static final lightTheme = ThemeData(

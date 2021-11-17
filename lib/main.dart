@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/multipages/show_page.dart';
 import 'package:multi-book-app/pages/login.dart';
 import 'dart:io';
 
@@ -10,10 +11,24 @@ import 'package:flutter/services.dart';
 
 import 'package:multi-book-app/themes.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
-
-
 import 'package:multi-book-app/constants.dart';
 import 'package:multi-book-app/pages/profileScreenUsers.dart';
+
+
+
+var user ;
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  await creatorPreferences.init();
+  runApp(const MyApp());
+}
+
+
 
 
 // var user ;
@@ -75,6 +90,7 @@ class MyApp extends StatelessWidget {
     return ThemeProvider(
       initTheme: kDarkTheme,
       child: Builder(
+
         builder: (context) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -82,6 +98,27 @@ class MyApp extends StatelessWidget {
             home: ProfileScreen(),
           );
         },
+
+        builder: (context) => MaterialApp(
+          
+        
+          initialRoute: '/login',
+
+          routes: {
+            '/': (context) =>  MainScreen(),
+            //       title'/login':(context)=>  LoginScreen(),
+            '/profile': (context) => ProfilePage(),
+            '/login': (context) => LoginPage(),
+            '/create': (context) => MainScreen(),
+           // '/showPage':(context)=> ShowPage(post: post),
+          },
+
+          debugShowCheckedModeBanner: false,
+          theme: ThemeProvider.of(context),
+          title: title,
+          //home: ProfilePage(),
+        ),
+
       ),
     );
   }
