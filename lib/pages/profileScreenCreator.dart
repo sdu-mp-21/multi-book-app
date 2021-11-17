@@ -36,34 +36,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return ThemeSwitchingArea(
       child: Builder(
-        builder: (context) => Scaffold(
-          appBar: buildAppBar(context),
-          body: ListView(
-            physics: BouncingScrollPhysics(),
-            children: [
-              ProfileWidget(
-                imagePath: creator.imagePath,
-                onClicked: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => EditProfilePage()),
-                  );
-                  setState(() {});
-                },
-              ),
-              const SizedBox(height: 24),
-              buildName(creator),
-              const SizedBox(height: 24),
-              Center(child: buildUpgradeButton()),
-              const SizedBox(height: 24),
-              NumbersWidget(),
-              const SizedBox(height: 48),
-              buildAbout(creator),
-            ],
-          ),
-        ),
+          builder: (context) =>
 
-    return Scaffold(
-      appBar: buildAppBar(context),
+
+           Scaffold(
+          appBar: buildAppBar(context),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
@@ -81,8 +58,8 @@ class _ProfilePageState extends State<ProfilePage> {
           buildAbout(creator),
         ],
       ),
-       bottomNavigationBar: BottomNavigationBar(
-       
+      bottomNavigationBar: BottomNavigationBar(
+
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
@@ -108,11 +85,16 @@ class _ProfilePageState extends State<ProfilePage> {
             label: 'Profile',
           ),
         ],
-        currentIndex: _current_index,
-        onTap: _navigater,
+        // currentIndex: _current_index,
+        // onTap: _navigater,
+
       ),
+    ),
+    ),
+
     );
-  }
+
+}
 
   Widget buildName(Creator creator) => Column(
     children: [
