@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:multi-book-app/inputs/buttons/multi_outlined_button.dart';
 import 'package:multi-book-app/model/constants.dart';
 import 'package:multi-book-app/model/posts.dart';
 import 'package:multi-book-app/multipages/show_page.dart';
@@ -61,9 +62,9 @@ class _MainScreenState extends State<MainScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _getOutlined(0, 'AUDIO'),
-                    _getOutlined(1, 'VIDEO'),
-                    _getOutlined(2, 'MANGA'),
+                    MultiOutlinedButton(text: 'Manga'),
+                    MultiOutlinedButton(text: 'Video'),
+                    MultiOutlinedButton(text: 'Audio'),
                   ],
                 ),
                 Container(
@@ -324,52 +325,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
 // Selected Button
-  Color getColorBytheme(bool bln) {
-    Color color = Colors.black;
-    if (bln) {
-      if (user.isDarkMode) {
-        color = Colors.white;
-      } else {
-        color = primaryColor;
-      }
-    } else {
-      if (user.isDarkMode) {
-        color = primaryColor;
-      } else {
-        color = Colors.white;
-      }
-    }
-    return color;
-  }
+  
 
-   OutlinedButton _getOutlined(int index, String name) {
-    return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        shadowColor: greenColor,
-        onSurface: Colors.amber,
-        backgroundColor: getColorBytheme(selected_category[index]),
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(30))),
-      ),
-      onPressed: () {
-        setState(() {
-          if (selected_category[index]) {
-            selected_category[index] = false;
-          } else {
-            selected_category[index] = true;
-          }
-        });
-      },
-      child: Container(
-        alignment: Alignment.center,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        width: MediaQuery.of(context).size.width * 0.20,
-        height: 100,
-        child: Text(
-          name,
-          style: TextStyle(color: getColorBytheme(!selected_category[index])),
-        ),
-      ),
-    );
-  }
+   
 }
