@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "604864271478",
+    "project_id": "multi-book-b4571",
+    "storage_bucket": "multi-book-b4571.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604864271478:android:cd43cff3205cb829153b57",
+        "android_client_info": {
+          "package_name": "com.example.multi_book"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604864271478-nl9kvctlscu7h1g36r2dhmgr5uucuhrv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6p5jpw5IJCrIfepZ-2PAzUDFULZFDeAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604864271478-nl9kvctlscu7h1g36r2dhmgr5uucuhrv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
