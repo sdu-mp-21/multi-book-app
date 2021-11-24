@@ -1,10 +1,13 @@
+// ignore: file_names
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/model/constants.dart';
 import 'package:multi-book-app/profileScreenWidget/profile_list_item.dart';
-import 'package:multi-book-app/constants.dart';
+
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
 
 class ProfileScreen extends StatelessWidget {
   @override
@@ -79,14 +82,14 @@ class ProfileScreen extends StatelessWidget {
     var themeSwitcher = ThemeSwitcher(
       builder: (context) {
         return AnimatedCrossFade(
-          duration: Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 200),
           crossFadeState:
-          ThemeProvider.of(context).brightness == Brightness.dark
-              ? CrossFadeState.showFirst
-              : CrossFadeState.showSecond,
+              ThemeProvider.of(context)!.brightness == Brightness.dark
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
           firstChild: GestureDetector(
             onTap: () =>
-                ThemeSwitcher.of(context).changeTheme(theme: kLightTheme),
+                ThemeSwitcher.of(context)!.changeTheme(theme: kLightTheme),
             child: Icon(
               LineAwesomeIcons.sun,
               size: ScreenUtil().setSp(kSpacingUnit.w * 3),
@@ -94,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           secondChild: GestureDetector(
             onTap: () =>
-                ThemeSwitcher.of(context).changeTheme(theme: kDarkTheme),
+                ThemeSwitcher.of(context)!.changeTheme(theme: kDarkTheme),
             child: Icon(
               LineAwesomeIcons.moon,
               size: ScreenUtil().setSp(kSpacingUnit.w * 3),
@@ -130,6 +133,7 @@ class ProfileScreen extends StatelessWidget {
                 Expanded(
                   child: ListView(
                     children: <Widget>[
+                      // ignore: prefer_const_constructors
                       ProfileListItem(
                         icon: LineAwesomeIcons.user_shield,
                         text: 'Privacy',
@@ -154,6 +158,7 @@ class ProfileScreen extends StatelessWidget {
                         icon: LineAwesomeIcons.alternate_sign_out,
                         text: 'Logout',
                         hasNavigation: false,
+                        key: null,
                       ),
                     ],
                   ),

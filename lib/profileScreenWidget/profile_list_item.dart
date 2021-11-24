@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:multi-book-app/constants.dart';
+
+import 'package:multi-book-app/model/constants.dart';
 
 class ProfileListItem extends StatelessWidget {
   final IconData icon;
