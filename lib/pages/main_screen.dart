@@ -22,12 +22,11 @@ class _MainScreenState extends State<MainScreen> {
   static List<bool> selected_category = [false, false, false];
   List<Post> posts = [
     Post(
-      author: "Zero two",
+      author: "J.K. Rowling",
       description:
-          "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. ",
+          "Rowling and the sixth and penultimate novel in the Harry Potter series. Set during Harry Potter's sixth year at Hogwarts, the novel explores the past of the boy wizard's nemesis, Lord Voldemort, and Harry's preparations for the final battle against Voldemort alongside his headmaster and mentor Albus Dumbledore. ",
       book: const Image(
-        image: NetworkImage(
-            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+        image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7jM-DdqTl2dM597fLOve9eu4jIUavk67iQ&usqp=CAU'),
         width: 80,
       ),
       nameBook: "Harry Potter",
@@ -256,14 +255,13 @@ class _MainScreenState extends State<MainScreen> {
                 ElevatedButton(
                   onPressed: () {
                     // open showpage
-                     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ShowPage(post: post,)
-                            
-                            ),
-                        );
-                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ShowPage(
+                                post: post,
+                              )),
+                    );
                   },
                   child: const Text(
                     'SHOW',
@@ -288,8 +286,7 @@ class _MainScreenState extends State<MainScreen> {
               author: "RAM",
               description: "Something",
               book: const Image(
-                image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                image: AssetImage('./images/book_max_fray.jpg'),
                 width: 80,
               ),
               nameBook: "Lalisa")
@@ -301,8 +298,7 @@ class _MainScreenState extends State<MainScreen> {
               author: "Nezuko",
               description: "Something",
               book: const Image(
-                image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                image: AssetImage('./images/book_max_fray.jpg'),
                 width: 80,
               ),
               nameBook: "IU")
@@ -314,8 +310,7 @@ class _MainScreenState extends State<MainScreen> {
               author: "Naruto",
               description: "Something",
               book: const Image(
-                image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+                image: AssetImage('./images/book_max_fray.jpg'),
                 width: 80,
               ),
               nameBook: "Sasuke")
@@ -325,7 +320,5 @@ class _MainScreenState extends State<MainScreen> {
   }
 
 // Selected Button
-  
 
-   
 }

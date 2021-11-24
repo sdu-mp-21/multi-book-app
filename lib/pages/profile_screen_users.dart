@@ -12,7 +12,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(const BoxConstraints(), designSize: const Size(414, 896));
+    ScreenUtil.init(const BoxConstraints(),designSize:const Size(414,896));
 
     var profileInfo = Expanded(
       child: Column(
