@@ -24,7 +24,11 @@ class _ShowPageState extends State<ShowPage> {
       appBar: AppBar(
         backgroundColor: primaryColor,
       ),
-      body: Column(children: [
+      body: 
+      ListView(
+        children:[
+      
+      Column(children: [
         Card(
           child: SingleChildScrollView(
             child: Column(
@@ -114,6 +118,7 @@ class _ShowPageState extends State<ShowPage> {
         ),
         )
       ]),
+        ])
     );
   }
 }
