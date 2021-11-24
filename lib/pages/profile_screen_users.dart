@@ -12,7 +12,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
+    ScreenUtil.init(const BoxConstraints(), designSize: const Size(414, 896));
 
     var profileInfo = Expanded(
       child: Column(
@@ -132,29 +132,30 @@ class ProfileScreen extends StatelessWidget {
                 header,
                 Expanded(
                   child: ListView(
+                    // ignore: prefer_const_literals_to_create_immutables
                     children: <Widget>[
                       // ignore: prefer_const_constructors
                       ProfileListItem(
                         icon: LineAwesomeIcons.user_shield,
                         text: 'Privacy',
                       ),
-                      ProfileListItem(
+                      const ProfileListItem(
                         icon: LineAwesomeIcons.history,
                         text: 'Purchase History',
                       ),
-                      ProfileListItem(
+                      const ProfileListItem(
                         icon: LineAwesomeIcons.question_circle,
                         text: 'Help & Support',
                       ),
-                      ProfileListItem(
+                      const ProfileListItem(
                         icon: LineAwesomeIcons.cog,
                         text: 'Settings',
                       ),
-                      ProfileListItem(
+                      const ProfileListItem(
                         icon: LineAwesomeIcons.user_plus,
                         text: 'Invite a Friend',
                       ),
-                      ProfileListItem(
+                      const ProfileListItem(
                         icon: LineAwesomeIcons.alternate_sign_out,
                         text: 'Logout',
                         hasNavigation: false,

@@ -88,8 +88,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     label: 'Profile',
                   ),
                 ],
-                // currentIndex: _current_index,
-                // onTap: _navigater,
+                currentIndex: _current_index,
+                onTap: _navigater,
 
               ),
             ),

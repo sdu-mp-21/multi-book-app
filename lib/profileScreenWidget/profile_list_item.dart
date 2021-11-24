@@ -10,7 +10,7 @@ class ProfileListItem extends StatelessWidget {
   final bool hasNavigation;
 
   const ProfileListItem({
-    required Key key,
+    Key? key,
     required this.icon,
     required this.text,
     this.hasNavigation = true,
