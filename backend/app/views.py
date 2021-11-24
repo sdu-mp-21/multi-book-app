@@ -5,11 +5,11 @@ from .serializers import AuthorSerializer
 
 @api_view(['GET', 'POST'])
 def index(request):
-  return 'this is an index page'
+  return Response('this is an index page')
 
 
 @api_view(['GET'])
 def get_author(request, id):
   author = Author.objects.get(id=id)
   serializer = AuthorSerializer(author)
-  return Response(serializer)
+  return Response(serializer.data)
