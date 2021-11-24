@@ -25,4 +25,8 @@ class Post {
     Map<String, dynamic> user = jsonDecode(jsonString);
     return user;
   }
+
+  static List<dynamic>? fromJson(int i) {
+    return null;
+  }
 }

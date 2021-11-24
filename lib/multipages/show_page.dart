@@ -4,6 +4,7 @@ import 'package:multi-book-app/model/posts.dart';
 import 'package:multi-book-app/inputs/buttons/multi_outlined_button.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
 
+// ignore: must_be_immutable
 class ShowPage extends StatefulWidget {
   Post post;
   ShowPage({Key? key, required this.post}) : super(key: key);
