@@ -4,6 +4,7 @@ import 'package:multi-book-app/model/posts.dart';
 import 'package:multi-book-app/inputs/buttons/multi_outlined_button.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
 
+// ignore: must_be_immutable
 class ShowPage extends StatefulWidget {
   Post post;
   ShowPage({Key? key, required this.post}) : super(key: key);
@@ -23,7 +24,11 @@ class _ShowPageState extends State<ShowPage> {
       appBar: AppBar(
         backgroundColor: primaryColor,
       ),
-      body: Column(children: [
+      body: 
+      ListView(
+        children:[
+      
+      Column(children: [
         Card(
           child: SingleChildScrollView(
             child: Column(
@@ -104,72 +109,16 @@ class _ShowPageState extends State<ShowPage> {
           
           child: Row(
             children: [
-              MultiOutlinedButton(
-                
-                onPressed: () {
-                  print('Pressed');
-                },
-                name: 'Audio',
-                multiChild: Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  height: 100,
-                  child: Text(
-                    'Audio',
-                    style: TextStyle(
-                        color: MultiOutlinedButton.getColorBytheme(!post.isSelected)
-                            
-                            ),
-                  ),
-                ),
-              ),
-              MultiOutlinedButton(
-                
-                onPressed: () {
-                  print('Pressed');
-                },
-                name: 'Audio',
-                multiChild: Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  height: 100,
-                  child: Text(
-                    'VIDEO',
-                    style: TextStyle(
-                        color: MultiOutlinedButton.getColorBytheme(!post.isSelected)
-                            
-                            ),
-                  ),
-                ),
-              ),
-              MultiOutlinedButton(
-                
-                onPressed: () {
-                  print('Pressed');
-                },
-                name: 'Manga',
-                multiChild: Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                  width: MediaQuery.of(context).size.width * 0.20,
-                  height: 100,
-                  child: Text(
-                    'Manga',
-                    style: TextStyle(
-                        color: MultiOutlinedButton.getColorBytheme(!post.isSelected)
-                            
-                            ),
-                  ),
-                ),
-              ),
+              // MultiOutlinedButton(text: 'Manga'),
+              // MultiOutlinedButton(text: 'Video'),
+              // MultiOutlinedButton(text: 'Audio'),
 
             ],
           ),
         ),
         )
       ]),
+        ])
     );
   }
 }
