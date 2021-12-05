@@ -35,8 +35,8 @@ dependencies:
   path_provider: ^2.0.7
   shared_preferences: ^2.0.8
   video_player: ^2.2.7
-  firebase_core: ^1.10.0
-  firebase_auth: ^3.2.0
+  firebase_core: ^1.10.2
+  firebase_auth: ^3.3.0
   cloud_firestore: ^3.1.0
   line_awesome_flutter: ^2.0.0
   flutter_screenutil: ^5.0.0+2
@@ -73,6 +73,7 @@ flutter:
   assets:
      - assets/images/1.jfif
      - assets/images/book_max_fray.jpg
+     - assets/images/undraw_welcome_cats_thqn.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
