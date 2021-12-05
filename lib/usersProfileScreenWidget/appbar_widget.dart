@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:multi-book-app/themes.dart';
-import 'package:multi-book-app/utils/creator_preferences.dart';
+import 'package:multi-book-app/utils/users_preferences.dart';
+import 'package:multi-book-app/main.dart';
 
 AppBar buildAppBar(BuildContext context) {
-  final creator = CreatorPreferences.getCreator();
-  final isDarkMode = creator.isDarkMode;
+  final creator = UsersPreferences.getUsers();
+  final isDarkMode = users.isDarkMode;
   final icon = isDarkMode ? CupertinoIcons.sun_max : CupertinoIcons.moon_stars;
 
   return AppBar(
@@ -23,8 +24,8 @@ AppBar buildAppBar(BuildContext context) {
             final switcher = ThemeSwitcher.of(context)!;
             switcher.changeTheme(theme: theme);
 
-            final newCreator = creator.copy(isDarkMode: !isDarkMode);
-            CreatorPreferences.setCreator(newCreator);
+            final newUsers = creator.copy(isDarkMode: !isDarkMode);
+            UsersPreferences.setUsers(newUsers);
           },
         ),
       ),

@@ -14,7 +14,6 @@ class ShowPage extends StatefulWidget {
 }
 
 class _ShowPageState extends State<ShowPage> {
-  var user = creatorPreferences.getCreator();
 
   Post post;
   _ShowPageState({required this.post});

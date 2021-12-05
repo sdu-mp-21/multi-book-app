@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-class creatorPreferences {
+class CreatorPreferences {
   static late SharedPreferences _preferences;
 
-  static const _keyUser = 'creator';
+  static const _keyCreator = 'creator';
   static const myCreator = Creator(
     imagePath:
     'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=333&q=80',
@@ -23,11 +23,11 @@ class creatorPreferences {
   static Future setCreator(Creator creator) async {
     final json = jsonEncode(creator.toJson());
 
-    await _preferences.setString(_keyUser, json);
+    await _preferences.setString(_keyCreator, json);
   }
 
   static Creator getCreator() {
-    final json = _preferences.getString(_keyUser);
+    final json = _preferences.getString(_keyCreator);
 
     return json == null ? myCreator : Creator.fromJson(jsonDecode(json));
   }

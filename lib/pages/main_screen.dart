@@ -4,6 +4,7 @@ import 'package:multi-book-app/model/constants.dart';
 import 'package:multi-book-app/model/posts.dart';
 import 'package:multi-book-app/multipages/show_page.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
+import 'package:multi-book-app/utils/users_preferences.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  var user = creatorPreferences.getCreator();
+  var user = CreatorPreferences.getCreator();
 
   // ignore: non_constant_identifier_names
   int _current_index = 0;
@@ -53,7 +54,6 @@ class _MainScreenState extends State<MainScreen> {
               color: greenColor,
             ),
 
-            // borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
           ),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -324,7 +324,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
 // Selected Button
-  Color getColorBytheme(bool bln) {
+  Color getColorByTheme(bool bln) {
     Color color = Colors.black;
     if (bln) {
       if (user.isDarkMode) {
@@ -347,7 +347,7 @@ class _MainScreenState extends State<MainScreen> {
       style: OutlinedButton.styleFrom(
         shadowColor: greenColor,
         onSurface: Colors.amber,
-        backgroundColor: getColorBytheme(selected_category[index]),
+        backgroundColor: getColorByTheme(selected_category[index]),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30))),
       ),
@@ -367,7 +367,7 @@ class _MainScreenState extends State<MainScreen> {
         height: 100,
         child: Text(
           name,
-          style: TextStyle(color: getColorBytheme(!selected_category[index])),
+          style: TextStyle(color: getColorByTheme(!selected_category[index])),
         ),
       ),
     );

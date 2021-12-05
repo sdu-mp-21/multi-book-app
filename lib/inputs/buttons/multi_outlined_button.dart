@@ -6,7 +6,7 @@ import 'package:multi-book-app/utils/creator_preferences.dart';
 
 // ignore: must_be_immutable
 class MultiOutlinedButton extends OutlinedButton {
-  static var user = creatorPreferences.getCreator();
+  static var user = CreatorPreferences.getCreator();
   static bool isSelected = false;
   String name;
   
