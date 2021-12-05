@@ -25,11 +25,10 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  int _current_index = 0;
 
   @override
   Widget build(BuildContext context) {
-    final creator = creatorPreferences.getCreator();
+    final creator = CreatorPreferences.getCreator();
 
 
     return ThemeSwitchingArea(
@@ -88,8 +87,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     label: 'Profile',
                   ),
                 ],
-                currentIndex: _current_index,
-                onTap: _navigater,
+                // currentIndex: _current_index,
+                // onTap: _navigater,
 
               ),
             ),
@@ -99,14 +98,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
 
-
-  void _navigater(int i) {
-    const routes = ['/', '/search', '/create', '/wallet', '/profile'];
-    setState(() {
-      _current_index = i;
-    });
-
-    Navigator.popAndPushNamed(context, routes[i]);
   }
 
   Widget buildName(Creator creator) => Column(
@@ -124,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
       );
 
   Widget buildUpgradeButton() => ButtonWidget(
-        text: 'Upgrade To PRO',
+        text: 'My Library',
         onClicked: () {},
       );
 
@@ -145,4 +136,4 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       );
-}
+
