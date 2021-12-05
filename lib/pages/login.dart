@@ -1,8 +1,35 @@
+// import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget{
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  late TextEditingController _emailController;
+  late TextEditingController _passwordController;
+
+  @override
+  void initState(){
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+    
+  
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -33,6 +60,7 @@ class LoginPage extends StatelessWidget {
                     Text(
                       "Login",
                       style: TextStyle(
+                        color: Colors.black,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
@@ -47,20 +75,49 @@ class LoginPage extends StatelessWidget {
                         color: Colors.grey[700],
                       ),
                     ),
-                    SizedBox(
-                      height: 30,
-                    )
+                  
+                    const SizedBox(height: 30),
+
                   ],
                 ),
+
+                // TextFormField(
+                //         controller: _emailController,
+                //         // validator: (val)=> val.isNotEmpty,
+                //         decoration: InputDecoration(
+                          
+                //           hintText: "Email",
+                //           prefixIcon: Icon(Icons.mail),
+                          
+                //           border: OutlineInputBorder(
+                //             borderRadius: BorderRadius.circular(10)
+                //             )
+                //         )
+                //       ),
+
+                //       TextFormField(
+                //         controller: _passwordController,
+                //         // validator: (val)=> val.isNotEmpty,
+                //         decoration: InputDecoration(
+                //           hintText: "Password",
+                //           prefixIcon: Icon(Icons.vpn_key),
+                //           border: OutlineInputBorder(
+                //             borderRadius: BorderRadius.circular(10)
+                //             )
+                //         )
+                //       ),
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40),
                   child: Column(
+                    
                     children: [
-                      makeInput(label: "Email"),
+                      makeInput(label: "Email",),
                       makeInput(label: "Password", obsureText: true),
                     ],
                   ),
                 ),
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40),
                   child: Container(
@@ -72,6 +129,7 @@ class LoginPage extends StatelessWidget {
                             top: BorderSide(color: Colors.black),
                             right: BorderSide(color: Colors.black),
                             left: BorderSide(color: Colors.black))),
+
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
@@ -89,11 +147,11 @@ class LoginPage extends StatelessWidget {
                             color: Colors.white70),
                       ),
                     ),
+
+
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                const SizedBox( height: 20,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
