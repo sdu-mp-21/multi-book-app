@@ -5,6 +5,9 @@ from django.db import models
 class Author(models.Model):
   fullname = models.CharField(max_length=500)
 
+  def __str__(self):
+    return self.fullname
+
 
 class Book(models.Model):
   title = models.CharField(max_length=200)
