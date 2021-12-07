@@ -5,70 +5,83 @@ import 'package:multi-book-app/pages/login.dart';
 import 'package:multi-book-app/pages/signup.dart';
 
 class WelcomeScreen extends StatelessWidget{
+  const WelcomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
+
+
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.symmetric(horizontal: 30,vertical: 30),
+          padding: EdgeInsets.symmetric(horizontal: 30,vertical: 50),
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            crossAxisAlignment: CrossAxisAlignment.center,
+            
+            children: <Widget> [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
 
+                children: <Widget> [
                   Text(
                     "Welcome to Multibook!",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold, 
+                      fontSize: 20, 
+                      ),
                   ),
 
                   SizedBox(height: 30,),
 
-                  Text("In this app you can find every book, then read, watch and listen it!",
+                  Text(
+                    "In this app you can find every book, then read, watch and listen it!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.blue,
                       fontSize: 15
                     ),
                   ),
-
-                  SizedBox(height: 30,),
-
-                  Container(
-                    height: MediaQuery.of(context).size.height/4,
-                    child: Image(
-                      image: NetworkImage('https://uxwing.com/wp-content/themes/uxwing/download/18-education-school/read-book.png'),
-                    ),
-                  ),
-
-                  SizedBox(height: 30,),
-
+                ],
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height /3,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/undraw_welcome_cats_thqn.png")
+                  )
+                ),
+              ), 
+              Column(
+                children: <Widget> [
                   MaterialButton(
-                      minWidth: double.infinity,
+                    minWidth: double.infinity,
                       height: 60,
                       onPressed: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
                       },
-                    color: Colors.lightBlueAccent,
+                      color: Colors.lightBlueAccent,
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         color: Colors.black
                       ),
                       borderRadius: BorderRadius.circular(40)
                     ),
-                    child: Text("Login",
+                    child: Text(
+                      "Login",
                       style: TextStyle(
                         fontWeight: FontWeight.w600, fontSize: 16, color: Colors.white
                       ),
                     )
                   ),
-
-                  SizedBox(height: 30,),
-
+                  
+                  SizedBox(height: 30),
+                  
                   MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
@@ -90,8 +103,7 @@ class WelcomeScreen extends StatelessWidget{
                   )
 
                 ],
-              ),
-
+              )
             ],
           ),
         ),

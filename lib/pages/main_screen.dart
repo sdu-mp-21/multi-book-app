@@ -7,6 +7,7 @@ import 'package:multi-book-app/model/posts.dart';
 import 'package:multi-book-app/model/services.dart';
 import 'package:multi-book-app/multipages/show_page.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
+import 'package:multi-book-app/utils/users_preferences.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  var user = creatorPreferences.getCreator();
+  var user = CreatorPreferences.getCreator();
 
   // ignore: non_constant_identifier_names
   int _current_index = 0;
@@ -58,7 +59,6 @@ class _MainScreenState extends State<MainScreen> {
               color: greenColor,
             ),
 
-            // borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
           ),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -66,6 +66,11 @@ class _MainScreenState extends State<MainScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+<<<<<<< HEAD
+                    // MultiOutlinedButton(text: 'Manga'),
+                    // MultiOutlinedButton(text: 'Video'),
+                    // MultiOutlinedButton(text: 'Audio'),
+=======
                     Expanded(
                       child: MultiOutlinedButton(text: 'Manga'),
                     ),
@@ -75,6 +80,7 @@ class _MainScreenState extends State<MainScreen> {
                     Expanded(
                       child: MultiOutlinedButton(text: 'Audio'),
                     ),
+>>>>>>> 1206eac4e2ead8dab7e611bc4dd808ee56dffc77
                   ],
                 ),
                 SizedBox(
@@ -286,5 +292,53 @@ class _MainScreenState extends State<MainScreen> {
   }
 
 // Selected Button
+  Color getColorByTheme(bool bln) {
+    Color color = Colors.black;
+    if (bln) {
+      if (user.isDarkMode) {
+        color = Colors.white;
+      } else {
+        color = primaryColor;
+      }
+    } else {
+      if (user.isDarkMode) {
+        color = primaryColor;
+      } else {
+        color = Colors.white;
+      }
+    }
+    return color;
+  }
+
+   OutlinedButton _getOutlined(int index, String name) {
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        shadowColor: greenColor,
+        onSurface: Colors.amber,
+        backgroundColor: getColorByTheme(selected_category[index]),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+      ),
+      onPressed: () {
+        setState(() {
+          if (selected_category[index]) {
+            selected_category[index] = false;
+          } else {
+            selected_category[index] = true;
+          }
+        });
+      },
+      child: Container(
+        alignment: Alignment.center,
+        margin: const EdgeInsets.symmetric(horizontal: 15),
+        width: MediaQuery.of(context).size.width * 0.20,
+        height: 100,
+        child: Text(
+          name,
+          style: TextStyle(color: getColorByTheme(!selected_category[index])),
+        ),
+      ),
+    );
+  }
 
 }
