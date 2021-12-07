@@ -118,7 +118,9 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ]),
         ),
+        
         _getNameCategory('Top ratings'),
+
         SizedBox(
           height: 300,
           width: MediaQuery.of(context).size.width,
@@ -126,7 +128,7 @@ class _MainScreenState extends State<MainScreen> {
             Row(
               children: [
                  FutureBuilder<List<dynamic>?> (
-                    future: getPost('Naruto'),
+                    future: getPost('harryPotter'),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List<Widget> arr = [];
