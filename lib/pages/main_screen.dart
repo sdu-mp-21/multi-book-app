@@ -236,39 +236,7 @@ class _MainScreenState extends State<MainScreen> {
 
             ],
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //   children: [
-          //     SizedBox(
-          //         width: MediaQuery.of(context).size.width * 0.25,
-          //         child: Column(children: [
-          //           // ((post.book == null)?post.book:Text('not Found image')),
-          //           Text(
-          //             post.nameBook ??= '',
-          //           )
-          //         ])),
-          //     Container(
-          //       height: 200,
-          //       width: MediaQuery.of(context).size.width * 0.5,
-          //       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-          //       child: Column(
-          //         mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //         children: [
-          //           Text(
-          //             post.author ??= 'Noname',
-          //             style: const TextStyle(
-          //               fontWeight: FontWeight.bold,
-          //             ),
-          //           ),
-          //           Text(
-          //             post.description ??= '',
-          //             softWrap: true,
-          //           ),
-          //         ],
-          //       ),
-          //     )
-          //   ],
-          // ),
+          
         ));
   }
 

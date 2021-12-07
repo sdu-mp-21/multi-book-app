@@ -20,26 +20,20 @@ import 'package:multi-book-app/utils/creator_preferences.dart';
 import 'package:multi-book-app/model/constants.dart';
 import 'package:multi-book-app/utils/users_preferences.dart';
 
-
-
-
-var users ;
+var users;
 var creators;
-
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
   await CreatorPreferences.init();
   await UsersPreferences.init();
-  runApp( MyApp());
+  runApp(MyApp());
 }
-
-
-
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -49,37 +43,21 @@ class MyApp extends StatelessWidget {
     users = UsersPreferences.getUsers();
 
     return ThemeProvider(
-      initTheme:
-      users.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
+      initTheme: users.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
       child: Builder(
         builder: (context) => MaterialApp(
-
-
-          
-
-    
-
           initialRoute: '/welcome',
-
           routes: {
             '/': (context) => MainScreen(),
             '/profile': (context) => ProfilePage(),
             '/welcome': (context) => WelcomeScreen(),
             '/create': (context) => MainScreen(),
-
           },
-
           debugShowCheckedModeBanner: false,
           theme: ThemeProvider.of(context),
           title: 'Multi Book',
-
         ),
       ),
     );
   }
 }
-
-
-
-
-
