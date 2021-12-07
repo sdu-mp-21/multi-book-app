@@ -22,9 +22,10 @@ import 'package:multi-book-app/utils/users_preferences.dart';
 
 
 
+
 var users ;
 var creators;
-Future main()  async{
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,18 +35,10 @@ Future main() async {
   ]);
   await CreatorPreferences.init();
   await UsersPreferences.init();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  static const String title = 'Profile Page';
 
-  const MyApp({Key? key}) : super(key: key);
-
-
-  await creatorPreferences.init();
-  runApp(MyApp());
-}
 
 
 class MyApp extends StatelessWidget {
@@ -62,16 +55,9 @@ class MyApp extends StatelessWidget {
         builder: (context) => MaterialApp(
 
 
-          initialRoute: '/login',
+          
 
-    routes:{
-      '/':(context)=>   MainScreen(),
-      //       title'/login':(context)=>  LoginScreen(),
-      '/profile':(context)=>  ProfilePage(),
-      '/login':(context)=>  LoginScreen(),
-      '/create':(context)=>  MainScreen(),
-      //'/users' :(context)=> ProfilePage(),
-    },
+    
 
           initialRoute: '/welcome',
 
@@ -96,46 +82,4 @@ class MyApp extends StatelessWidget {
 
 
 
-// <<<<<<< Aziza
-// Future main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   // Firebase.initializeApp();
-//   await SystemChrome.setPreferredOrientations([
-//     DeviceOrientation.portraitUp,
-//     DeviceOrientation.portraitDown,
-//   ]);
 
-//   await creatorPreferences.init();
-//   runApp(MyApp());
-// }
-
-
-// class MyApp extends StatelessWidget {
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return ThemeProvider(
-//       initTheme: kDarkTheme,
-//       child: Builder(
-//         builder: (context) => MaterialApp(
-//           initialRoute: '/welcome',
-
-//           routes: {
-//             '/': (context) => MainScreen(),
-//             '/profile': (context) => ProfilePage(),
-//             '/welcome': (context) => WelcomeScreen(),
-//             '/create': (context) => MainScreen(),
-            
-//           },
-
-//           debugShowCheckedModeBanner: false,
-//           theme: ThemeProvider.of(context),
-//           title: 'Multi Book',
-          
-//         ),
-//       ),
-//     );
-//   }
-// }
-// =======
-// >>>>>>> master

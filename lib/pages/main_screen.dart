@@ -9,6 +9,7 @@ import 'package:multi-book-app/multipages/show_page.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
 import 'package:multi-book-app/utils/users_preferences.dart';
 
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -66,11 +67,6 @@ class _MainScreenState extends State<MainScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-<<<<<<< HEAD
-                    // MultiOutlinedButton(text: 'Manga'),
-                    // MultiOutlinedButton(text: 'Video'),
-                    // MultiOutlinedButton(text: 'Audio'),
-=======
                     Expanded(
                       child: MultiOutlinedButton(text: 'Manga'),
                     ),
@@ -80,7 +76,6 @@ class _MainScreenState extends State<MainScreen> {
                     Expanded(
                       child: MultiOutlinedButton(text: 'Audio'),
                     ),
->>>>>>> 1206eac4e2ead8dab7e611bc4dd808ee56dffc77
                   ],
                 ),
                 SizedBox(

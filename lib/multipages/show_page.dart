@@ -14,12 +14,7 @@
 //   _ShowPageState createState() => _ShowPageState(post: post);
 // }
 
-<<<<<<< HEAD
-class _ShowPageState extends State<ShowPage> {
-=======
 // class _ShowPageState extends State<ShowPage> {
-//   var user = creatorPreferences.getCreator();
->>>>>>> 1206eac4e2ead8dab7e611bc4dd808ee56dffc77
 
 //   Post post;
 //   _ShowPageState({required this.post});
@@ -112,13 +107,6 @@ class _ShowPageState extends State<ShowPage> {
           
 //           child: Card(
           
-<<<<<<< HEAD
-          child: Row(
-            children: [
-              // MultiOutlinedButton(text: 'Manga'),
-              // MultiOutlinedButton(text: 'Video'),
-              // MultiOutlinedButton(text: 'Audio'),
-=======
 //           child: Row(
 //             mainAxisAlignment: MainAxisAlignment.spaceAround,
 //             children: [
@@ -127,7 +115,6 @@ class _ShowPageState extends State<ShowPage> {
 //               Expanded(child: MultiOutlinedButton(text: 'Audio'),),
               
               
->>>>>>> 1206eac4e2ead8dab7e611bc4dd808ee56dffc77
 
 //             ],
 //           ),
