@@ -5,7 +5,7 @@ import 'package:multi-book-app/themes.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
 
 AppBar buildAppBar(BuildContext context) {
-  final creator = creatorPreferences.getCreator();
+  final creator = CreatorPreferences.getCreator();
   final isDarkMode = creator.isDarkMode;
   final icon = isDarkMode ? CupertinoIcons.sun_max : CupertinoIcons.moon_stars;
 
@@ -24,7 +24,7 @@ AppBar buildAppBar(BuildContext context) {
             switcher.changeTheme(theme: theme);
 
             final newCreator = creator.copy(isDarkMode: !isDarkMode);
-            creatorPreferences.setCreator(newCreator);
+            CreatorPreferences.setCreator(newCreator);
           },
         ),
       ),

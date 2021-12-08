@@ -3,26 +3,48 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class Post {
-  String author;
-  String description;
-  Image book;
-  String nameBook;
+  String? id;
+  String? author;
+  String? description;
+  String? bookUrl;
+  String? publisher;
+  String? nameBook;
   int? countOfread;
-  int? id;
-  dynamic data;
   bool isSelected = false;
   int countlike = 0;
 
-  Post({
-    required this.author,
-    required this.description,
-    required this.book,
-    required this.nameBook,
-  });
+  Post(
+    this.id,
+    this.author,
+    this.description,
+    this.bookUrl,
+    this.nameBook,
+  );
 
-  Map<String, dynamic>? readJSON() {
-    String jsonString = '..\\multi-book-app\\lib\\jsonFile\\postList.json';
-    Map<String, dynamic> user = jsonDecode(jsonString);
-    return user;
+  factory Post.postFromJson(Map<String, dynamic> json) {
+    String? id = json['id'];
+    String description = (json['volumeInfo']['description'] == null)
+        ? ''
+        : json['volumeInfo']['description'];
+    String? author = (json['volumeInfo']['authors'] == null)
+        ? ''
+        : json['volumeInfo']['authors'].toString();
+    author = author.replaceAll('[', '');
+    author = author.replaceAll(']', '');
+    
+    String? bookUrl = json['volumeInfo']['imageLinks']['smallThumbnail']??= '';
+
+    
+
+    String? nameBook = (json['volumeInfo']['title'] == null)
+        ? ''
+        : json['volumeInfo']['title'];
+
+    return Post(id, author, description, bookUrl, nameBook);
+  }
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'post: $id || $description || $author';
   }
 }

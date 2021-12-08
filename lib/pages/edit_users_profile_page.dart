@@ -2,29 +2,29 @@ import 'dart:io';
 
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:multi-book-app/model/creator.dart';
+import 'package:multi-book-app/model/users.dart';
 import 'package:path/path.dart';
-import 'package:multi-book-app/utils/creator_preferences.dart';
-import 'package:multi-book-app/profileScreenWidget/appbar_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/button_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/profile_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/textfield_widget.dart';
+import 'package:multi-book-app/utils/users_preferences.dart';
+import 'package:multi-book-app/usersProfileScreenWidget/appbar_widget.dart';
+import 'package:multi-book-app/usersProfileScreenWidget/button_widget.dart';
+import 'package:multi-book-app/usersProfileScreenWidget/profile_widget.dart';
+import 'package:multi-book-app/usersProfileScreenWidget/textfield_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
-class EditProfilePage extends StatefulWidget {
-  const EditProfilePage({Key? key}) : super(key: key);
+class EditUsersProfilePage extends StatefulWidget {
+  const EditUsersProfilePage({Key? key}) : super(key: key);
 
   @override
-  _EditProfilePageState createState() => _EditProfilePageState();
+  _EditUsersProfilePageState createState() => _EditUsersProfilePageState();
 }
 
-class _EditProfilePageState extends State<EditProfilePage> {
-  late Creator creator;
+class _EditUsersProfilePageState extends State<EditUsersProfilePage> {
+  late Users users;
 
   @override
   void initState() {
-    creator = CreatorPreferences.getCreator();
+    users = UsersPreferences.getUsers();
 
     super.initState();
 
@@ -34,13 +34,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) => ThemeSwitchingArea(
     child: Builder(
       builder: (context) => Scaffold(
-        appBar: buildAppBar(context),
+        // appBar: buildAppBar(context),
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 32),
           physics: BouncingScrollPhysics(),
           children: [
-            ProfileWidget(
-              imagePath: creator.imagePath,
+            UsersProfileWidget(
+              imagePath: users.imagePath,
               isEdit: true,
               onClicked: () async {
                 final image = await ImagePicker()
@@ -54,33 +54,33 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 final newImage =
                 await File(image.path).copy(imageFile.path);
 
-                setState(() => creator = creator.copy(imagePath: newImage.path));
+                setState(() => users = users.copy(imagePath: newImage.path));
               },
             ),
             const SizedBox(height: 24),
             TextFieldWidget(
               label: 'Full Name',
-              text: creator.name,
-              onChanged: (name) => creator = creator.copy(name: name),
+              text: users.name,
+              onChanged: (name) => users = users.copy(name: name),
             ),
             const SizedBox(height: 24),
             TextFieldWidget(
               label: 'Email',
-              text: creator.email,
-              onChanged: (email) => creator = creator.copy(email: email),
+              text: users.email,
+              onChanged: (email) => users = users.copy(email: email),
             ),
             const SizedBox(height: 24),
             TextFieldWidget(
               label: 'About',
-              text: creator.about,
+              text: users.about,
               maxLines: 5,
-              onChanged: (about) => creator = creator.copy(about: about),
+              onChanged: (about) => users = users.copy(about: about),
             ),
             const SizedBox(height: 24),
             ButtonWidget(
               text: 'Save',
               onClicked: () {
-                CreatorPreferences.setCreator(creator);
+                UsersPreferences.setUsers(users);
                 Navigator.of(context).pop();
               },
             ),

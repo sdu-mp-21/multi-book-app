@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:multi-book-app/model/constants.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
 
+// ignore: must_be_immutable
 class MultiOutlinedButton extends StatefulWidget {
   String text;
   MultiOutlinedButton({Key? key, required this.text}) : super(key: key);
@@ -14,7 +15,7 @@ class MultiOutlinedButton extends StatefulWidget {
 class _MultiOutlinedButtonState extends State<MultiOutlinedButton> {
   bool isSelected = false;
   String name = '';
-  var user = creatorPreferences.getCreator();
+  var user = CreatorPreferences.getCreator();
   _MultiOutlinedButtonState(this.name);
 
   @override
@@ -30,8 +31,8 @@ class _MultiOutlinedButtonState extends State<MultiOutlinedButton> {
       onPressed: onPressed,
       child: Container(
         alignment: Alignment.center,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        width: MediaQuery.of(context).size.width * 0.20,
+        //margin: const EdgeInsets.symmetric(horizontal: 15),
+        width: MediaQuery.of(context).size.width * 0.17,
         height: 100,
         child: Text(
           name,

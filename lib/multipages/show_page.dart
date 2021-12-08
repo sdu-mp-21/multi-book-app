@@ -4,6 +4,7 @@ import 'package:multi-book-app/model/posts.dart';
 import 'package:multi-book-app/inputs/buttons/multi_outlined_button.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
 
+// ignore: must_be_immutable
 class ShowPage extends StatefulWidget {
   Post post;
   ShowPage({Key? key, required this.post}) : super(key: key);
@@ -14,7 +15,6 @@ class ShowPage extends StatefulWidget {
 }
 
 class _ShowPageState extends State<ShowPage> {
-  var user = creatorPreferences.getCreator();
 
   Post post;
   _ShowPageState({required this.post});
@@ -32,31 +32,47 @@ class _ShowPageState extends State<ShowPage> {
         Card(
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Row(
                   children: [
                     Column(
                       children: [
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          height: 300,
-                          child: post.book,
+                          width: MediaQuery.of(context).size.width * 0.32,
+                         
+                          child: Image(
+                            image: NetworkImage(post.bookUrl??=''),
+                            width: 100,
+                            height: 150,
+                            
+                            ),
                         ),
-                        Text(post.nameBook)
+                        Text(post.nameBook??='')
                       ],
                     ),
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 15),
-                      width: MediaQuery.of(context).size.width * 0.5,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(post.nameBook),
                           Text(
-                            post.description,
+                            post.nameBook??='',
+                            textAlign: TextAlign.center,
+                            
+                            ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            // height: 300,
+                            child:  Text(
+                            post.description??='',
                             softWrap: true,
+                            overflow: TextOverflow.visible,
                           ),
+                          ),
+                         
                         ],
                       ),
                     ),
@@ -102,16 +118,19 @@ class _ShowPageState extends State<ShowPage> {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           height:300,
           
           child: Card(
           
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              MultiOutlinedButton(text: 'Manga'),
-              MultiOutlinedButton(text: 'Video'),
-              MultiOutlinedButton(text: 'Audio'),
+              Expanded(child: MultiOutlinedButton(text: 'Manga'),),
+              Expanded(child: MultiOutlinedButton(text: 'Video'),),
+              Expanded(child: MultiOutlinedButton(text: 'Audio'),),
+              
+              
 
             ],
           ),

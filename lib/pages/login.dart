@@ -1,8 +1,40 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:multi-book-app/model/authentication_services.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  late TextEditingController _emailController;
+  late TextEditingController _passwordController;
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  late AuthenticationService auth;
+
+  @override
+  void initState() {
+    auth = AuthenticationService();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    Color WarningColor = Colors.black;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -14,13 +46,13 @@ class LoginPage extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               size: 20,
               color: Colors.black,
             )),
       ),
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
         child: Column(
@@ -30,14 +62,15 @@ class LoginPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text(
+                    const Text(
                       "Login",
                       style: TextStyle(
+                        color: Colors.black,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Text(
@@ -47,27 +80,55 @@ class LoginPage extends StatelessWidget {
                         color: Colors.grey[700],
                       ),
                     ),
-                    SizedBox(
-                      height: 30,
-                    )
+                    const SizedBox(height: 30),
                   ],
                 ),
+
+                // TextFormField(
+                //         controller: _emailController,
+                //         // validator: (val)=> val.isNotEmpty,
+                //         decoration: InputDecoration(
+
+                //           hintText: "Email",
+                //           prefixIcon: Icon(Icons.mail),
+
+                //           border: OutlineInputBorder(
+                //             borderRadius: BorderRadius.circular(10)
+                //             )
+                //         )
+                //       ),
+
+                //       TextFormField(
+                //         controller: _passwordController,
+                //         // validator: (val)=> val.isNotEmpty,
+                //         decoration: InputDecoration(
+                //           hintText: "Password",
+                //           prefixIcon: Icon(Icons.vpn_key),
+                //           border: OutlineInputBorder(
+                //             borderRadius: BorderRadius.circular(10)
+                //             )
+                //         )
+                //       ),
+
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Column(
                     children: [
-                      makeInput(label: "Email"),
+                      makeInput(
+                        label: "Email",
+                      ),
                       makeInput(label: "Password", obsureText: true),
                     ],
                   ),
                 ),
+
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Container(
-                    padding: EdgeInsets.only(top: 3, left: 3),
+                    padding: const EdgeInsets.only(top: 3, left: 3),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        border: Border(
+                        border: const Border(
                             bottom: BorderSide(color: Colors.black),
                             top: BorderSide(color: Colors.black),
                             right: BorderSide(color: Colors.black),
@@ -76,12 +137,26 @@ class LoginPage extends StatelessWidget {
                       minWidth: double.infinity,
                       height: 60,
                       onPressed: () {
-                        Navigator.popAndPushNamed(context, '/');
+                        auth
+                            .signIn(
+                                _emailController.text, _passwordController.text)
+                            .then((value) {
+                          print(_emailController.text);
+                          print(_passwordController.text);
+                          if (value != null) {
+                            Navigator.popAndPushNamed(context, '/');
+                          } else {
+                            print('WARNING IS NOT WORK!!!!');
+                            setState(() {
+                              WarningColor = Colors.red;
+                            });
+                          }
+                        });
                       },
-                      color: Colors.indigoAccent[400],
+                      color: WarningColor,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40)),
-                      child: Text(
+                      child: const Text(
                         "Login",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -91,12 +166,12 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text("Dont have an account?"),
                     Text(
                       "Sign Up",
@@ -112,36 +187,41 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-}
 
-Widget makeInput({label, obsureText = false}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        label,
-        style: TextStyle(
-            fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      TextField(
-        obscureText: obsureText,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey,
-            ),
-          ),
-          border:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+  Widget makeInput({label, obsureText = false}) {
+    var controllers = {
+      'Email': _emailController,
+      'Password': _passwordController,
+    };
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+              fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
         ),
-      ),
-      SizedBox(
-        height: 30,
-      )
-    ],
-  );
+        const SizedBox(
+          height: 5,
+        ),
+        TextField(
+          obscureText: obsureText,
+          controller: controllers[label],
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.grey,
+              ),
+            ),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+          ),
+        ),
+        const SizedBox(
+          height: 30,
+        )
+      ],
+    );
+  }
 }
