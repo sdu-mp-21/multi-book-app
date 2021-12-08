@@ -87,8 +87,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     label: 'Profile',
                   ),
                 ],
-                // currentIndex: _current_index,
-                // onTap: _navigater,
+                currentIndex: 0,
+                onTap: _navigater,
 
               ),
             ),
@@ -96,6 +96,15 @@ class _ProfilePageState extends State<ProfilePage> {
 
     );
   }
+  void _navigater(int i) {
+    const routes = ['/', '/search', '/create', '/wallet', '/profile'];
+    // setState(() {
+    //   _current_index = i;
+    // });
+
+    Navigator.popAndPushNamed(context, routes[i]);
+  }
+
 
 
   }

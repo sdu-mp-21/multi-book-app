@@ -36,24 +36,32 @@ class _ShowPageState extends State<ShowPage> {
               children: [
                 Row(
                   children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.32,
+                      
+                      child:
                     Column(
                       children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.32,
+                       
+                          
                          
-                          child: Image(
+                           Image(
                             image: NetworkImage(post.bookUrl??=''),
                             width: 100,
                             height: 150,
                             
                             ),
-                        ),
-                        Text(post.nameBook??='')
+                        
+                        Text(
+                          post.nameBook??='',
+                          softWrap: true,
+                          
+                          )
                       ],
-                    ),
+                    ),),
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 15),
-                      width: MediaQuery.of(context).size.width * 0.45,
+                      width: MediaQuery.of(context).size.width * 0.56,
                       
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
