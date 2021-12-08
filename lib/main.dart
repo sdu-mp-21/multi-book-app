@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       initTheme: users.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
       child: Builder(
         builder: (context) => MaterialApp(
-          initialRoute: '/welcome',
+          initialRoute: '/',
           routes: {
             '/': (context) => MainScreen(),
             '/profile': (context) => ProfilePage(),

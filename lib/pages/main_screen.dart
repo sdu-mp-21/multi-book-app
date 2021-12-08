@@ -9,7 +9,6 @@ import 'package:multi-book-app/multipages/show_page.dart';
 import 'package:multi-book-app/utils/creator_preferences.dart';
 import 'package:multi-book-app/utils/users_preferences.dart';
 
-
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -59,7 +58,6 @@ class _MainScreenState extends State<MainScreen> {
               width: 0.5,
               color: greenColor,
             ),
-
           ),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -90,68 +88,62 @@ class _MainScreenState extends State<MainScreen> {
               ]),
         ),
         SizedBox(
-          height: 500,
-          child:ListView(children:[
-        _getNameCategory('Popular'),
-        SizedBox(
-          height: 300,
-          width: MediaQuery.of(context).size.width,
-          child: ListView(scrollDirection: Axis.horizontal, children: [
-            Row(
-              children: [
-                FutureBuilder<List<dynamic>?>(
-                    future: getPost('Harry Potter'),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        List<Widget> arr = [];
-                        for (int i = 0; i < snapshot.data!.length; i++) {
-                          var temp = snapshot.data![i] as Post;
-                          arr.add(postTemplate(temp));
-                        }
+            height: 500,
+            child: ListView(children: [
+              _getNameCategory('Popular'),
+              SizedBox(
+                height: 300,
+                width: MediaQuery.of(context).size.width,
+                child: ListView(scrollDirection: Axis.horizontal, children: [
+                  Row(
+                    children: [
+                      FutureBuilder<List<dynamic>?>(
+                          future: getPost('Harry Potter'),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              List<Widget> arr = [];
+                              for (int i = 0; i < snapshot.data!.length; i++) {
+                                var temp = snapshot.data![i] as Post;
+                                arr.add(postTemplate(temp));
+                              }
 
-                        return Row(children: arr);
-                      } else {
-                        return const CircularProgressIndicator();
-                      }
-                    }),
-                    
-              ],
-            ),
-          ]),
-        ),
-        
-        _getNameCategory('Top ratings'),
+                              return Row(children: arr);
+                            } else {
+                              return const CircularProgressIndicator();
+                            }
+                          }),
+                    ],
+                  ),
+                ]),
+              ),
+              _getNameCategory('Top ratings'),
+              SizedBox(
+                height: 300,
+                width: MediaQuery.of(context).size.width,
+                child: ListView(scrollDirection: Axis.horizontal, children: [
+                  Row(
+                    children: [
+                      FutureBuilder<List<dynamic>?>(
+                          future: getPost('harryPotter'),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              List<Widget> arr = [];
+                              for (int i = 0; i < snapshot.data!.length; i++) {
+                                var temp = snapshot.data![i] as Post;
+                                arr.add(postTemplate(temp));
+                              }
 
-        SizedBox(
-          height: 300,
-          width: MediaQuery.of(context).size.width,
-          child: ListView(scrollDirection: Axis.horizontal, children: [
-            Row(
-              children: [
-                 FutureBuilder<List<dynamic>?> (
-                    future: getPost('harryPotter'),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        List<Widget> arr = [];
-                        for (int i = 0; i < snapshot.data!.length; i++) {
-                          var temp = snapshot.data![i] as Post;
-                          arr.add(postTemplate(temp));
-                        }
-
-                        return Row(children: arr);
-                      } else {
-                        return const CircularProgressIndicator();
-                      }
-                    }),
-                    
-              ],
-            ),
-          ]),
-        ),
-        ])
-        )]
-      ),
-      
+                              return Row(children: arr);
+                            } else {
+                              return const CircularProgressIndicator();
+                            }
+                          }),
+                    ],
+                  ),
+                ]),
+              ),
+            ]))
+      ]),
 
       //
       bottomNavigationBar: BottomNavigationBar(
@@ -199,7 +191,7 @@ class _MainScreenState extends State<MainScreen> {
     // ignore: avoid_print
     //print(post!.description);
     post!.author ??= 'Noname';
-    
+
     // ignore: avoid_print
 
     // print(post.author);
@@ -209,35 +201,37 @@ class _MainScreenState extends State<MainScreen> {
 
     return SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
-        child: Card(
-          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          shadowColor: greenColor,
-          shape: Border.all(width: 0.1, style: BorderStyle.solid),
-          elevation: 250,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            
-            children: [
-              Image(image: NetworkImage(post.bookUrl??=''),
-              width: 100,
-              height: 150,
-              
+        child: MaterialButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return ShowPage(post: post);
+              }));
+            },
+            child: Card(
+              // margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              shadowColor: greenColor,
+              shape: Border.all(width: 0.1, style: BorderStyle.solid),
+              elevation: 250,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image(
+                    image: NetworkImage(post.bookUrl ??= ''),
+                    width: 100,
+                    height: 150,
+                  ),
+                  Text(
+                    post.nameBook ??= '',
+                    softWrap: true,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                post.nameBook??='',
-                softWrap: true,
-                style: const TextStyle(
-                  fontSize: 20,
-                  
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
-            ],
-          ),
-          
-        ));
+            )));
   }
 
   void _showSelectedByCategory(String value) {}
@@ -273,7 +267,7 @@ class _MainScreenState extends State<MainScreen> {
     return color;
   }
 
-   OutlinedButton _getOutlined(int index, String name) {
+  OutlinedButton _getOutlined(int index, String name) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         shadowColor: greenColor,
@@ -303,5 +297,4 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
 }
