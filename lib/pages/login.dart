@@ -141,17 +141,17 @@ class _LoginPageState extends State<LoginPage> {
                             .signIn(
                                 _emailController.text, _passwordController.text)
                             .then((value) {
+                          print(_emailController.text);
+                          print(_passwordController.text);
                           if (value != null) {
                             Navigator.popAndPushNamed(context, '/');
                           } else {
                             print('WARNING IS NOT WORK!!!!');
                             setState(() {
                               WarningColor = Colors.red;
-                            }
-                            );
+                            });
                           }
-                        }
-                        );
+                        });
                       },
                       color: WarningColor,
                       shape: RoundedRectangleBorder(
@@ -187,36 +187,41 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-}
 
-Widget makeInput({label, obsureText = false}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        label,
-        style: const TextStyle(
-            fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
-      ),
-      const SizedBox(
-        height: 5,
-      ),
-      TextField(
-        obscureText: obsureText,
-        decoration: const InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey,
-            ),
-          ),
-          border:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+  Widget makeInput({label, obsureText = false}) {
+    var controllers = {
+      'Email': _emailController,
+      'Password': _passwordController,
+    };
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+              fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
         ),
-      ),
-      const SizedBox(
-        height: 30,
-      )
-    ],
-  );
+        const SizedBox(
+          height: 5,
+        ),
+        TextField(
+          obscureText: obsureText,
+          controller: controllers[label],
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.grey,
+              ),
+            ),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+          ),
+        ),
+        const SizedBox(
+          height: 30,
+        )
+      ],
+    );
+  }
 }

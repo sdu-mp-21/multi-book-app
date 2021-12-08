@@ -102,8 +102,7 @@ class _SignupPageState extends State<SignupPage> {
                           minWidth: double.infinity,
                           height: 60,
                           onPressed: () {
-                            // print(_emailController.text);
-                            // print(_passwordController.text);
+                            
                             auth
                                 .signUp(_emailController.text,
                                     _passwordController.text)
