@@ -13,6 +13,7 @@ import 'package:multi-book-app/pages/profile_screen_creator.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/services.dart';
 import 'package:multi-book-app/pages/profile_screen_users.dart';
+import 'package:multi-book-app/pages/search.dart';
 import 'package:multi-book-app/pages/welcome.dart';
 
 import 'package:multi-book-app/themes.dart';
@@ -46,12 +47,13 @@ class MyApp extends StatelessWidget {
       initTheme: users.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
       child: Builder(
         builder: (context) => MaterialApp(
-          initialRoute: '/welcome',
+          initialRoute: '/',
           routes: {
             '/': (context) => MainScreen(),
             '/profile': (context) => ProfilePage(),
             '/welcome': (context) => WelcomeScreen(),
             '/create': (context) => MainScreen(),
+            '/search':(context)=> SearchPage(),
           },
           debugShowCheckedModeBanner: false,
           theme: ThemeProvider.of(context),
