@@ -6,6 +6,7 @@ class Creator {
   final String email;
   final String about;
   final bool isDarkMode;
+  
 
   const Creator({
     required this.imagePath,
@@ -31,18 +32,18 @@ class Creator {
       );
 
   static Creator fromJson(Map<String, dynamic> json) => Creator(
-    imagePath: json['imagePath'],
-    name: json['name'],
-    email: json['email'],
-    about: json['about'],
-    isDarkMode: json['isDarkMode'],
-  );
+        imagePath: json['imagePath'],
+        name: json['name'],
+        email: json['email'],
+        about: json['about'],
+        isDarkMode: json['isDarkMode'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'imagePath': imagePath,
-    'name': name,
-    'email': email,
-    'about': about,
-    'isDarkMode': isDarkMode,
-  };
+        'imagePath': imagePath,
+        'name': name,
+        'email': email,
+        'about': about,
+        'isDarkMode': isDarkMode,
+      };
 }

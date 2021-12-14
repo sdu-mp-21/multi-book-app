@@ -5,18 +5,24 @@ import 'package:multi-book-app/utils/creator_preferences.dart';
 // ignore: must_be_immutable
 class MultiOutlinedButton extends StatefulWidget {
   String text;
-  MultiOutlinedButton({Key? key, required this.text}) : super(key: key);
+  void Function()? onTap;
+  MultiOutlinedButton({Key? key, required this.text, this.onTap})
+      : super(key: key);
 
   @override
   // ignore: no_logic_in_create_state
-  _MultiOutlinedButtonState createState() => _MultiOutlinedButtonState(text);
+  _MultiOutlinedButtonState createState() =>
+      _MultiOutlinedButtonState(text, onTap: onTap);
 }
 
 class _MultiOutlinedButtonState extends State<MultiOutlinedButton> {
   bool isSelected = false;
   String name = '';
+
   var user = CreatorPreferences.getCreator();
-  _MultiOutlinedButtonState(this.name);
+  // ignore: prefer_function_declarations_over_variables
+  void Function()? onTap;
+  _MultiOutlinedButtonState(this.name, {this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +50,9 @@ class _MultiOutlinedButtonState extends State<MultiOutlinedButton> {
 
   void onPressed() {
     setState(() {
-      isSelected = (isSelected)?false:true;
+      isSelected = (isSelected) ? false : true;
     });
+    onTap!();
   }
 
   Color getColorBytheme(bool bln) {

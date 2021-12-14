@@ -15,7 +15,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
    TextEditingController txtNamebook = TextEditingController();
-  String search_name = 'Error';
+  String search_name = '';
   get greenColor => Colors.black;
   @override
   void initState() {
@@ -72,12 +72,12 @@ class _SearchPageState extends State<SearchPage> {
             ),
             child: Text(
             search_name,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
               
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.3,
+          height: MediaQuery.of(context).size.height * 0.35,
           width: MediaQuery.of(context).size.width,
           child: ListView(
             //shrinkWrap: true,
@@ -87,8 +87,8 @@ class _SearchPageState extends State<SearchPage> {
               Row(
                 children: [
               
-              
-              FutureBuilder<List<dynamic>?>(
+                  (search_name!='')?
+                  FutureBuilder<List<dynamic>?>(
                   future: getPost(search_name),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
@@ -103,7 +103,8 @@ class _SearchPageState extends State<SearchPage> {
                             else {
                               return const CircularProgressIndicator();
                             }
-                  }),],)
+                  }):const Text(''),
+                  ],)
             ],
           ),
         ),
@@ -163,25 +164,26 @@ class _SearchPageState extends State<SearchPage> {
               shadowColor: greenColor,
               shape: Border.all(width: 0.1, style: BorderStyle.solid),
               elevation: 250,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+              child:
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minHeight: 150,
+                  minWidth: 200,
+                ),
+                child: 
+                
+                
                   Image(
                     image: NetworkImage(post.bookUrl ??= ''),
-                    width: 100,
-                    height: 150,
+                    
+                    
+                    
                   ),
-                  Text(
-                    post.nameBook ??= '',
-                    softWrap: true,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            )));
+                  )
+                  
+              
+            )
+            )
+            );
   }
 }

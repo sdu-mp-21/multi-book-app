@@ -188,16 +188,8 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   postTemplate(Post? post) {
-    // ignore: avoid_print
-    //print(post!.description);
     post!.author ??= 'Noname';
 
-    // ignore: avoid_print
-
-    // print(post.author);
-
-    // print(post?.nameBook);
-    // print('this is PRINT');
 
     return SizedBox(
         width: MediaQuery.of(context).size.width * 0.4,
@@ -212,26 +204,27 @@ class _MainScreenState extends State<MainScreen> {
               shadowColor: greenColor,
               shape: Border.all(width: 0.1, style: BorderStyle.solid),
               elevation: 250,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+              child:
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minHeight: 150,
+                  minWidth: 200,
+                ),
+                child: 
+                
+                
                   Image(
                     image: NetworkImage(post.bookUrl ??= ''),
-                    width: 100,
-                    height: 150,
+                    
+                    
+                    
                   ),
-                  Text(
-                    post.nameBook ??= '',
-                    softWrap: true,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            )));
+                  )
+                  
+              
+            )
+            )
+            );
   }
 
   void _showSelectedByCategory(String value) {}
@@ -245,6 +238,9 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: Text(
           s,
+          style: TextStyle(
+            color: user.isDarkMode ? Colors.white:Colors.black
+            ),
         ));
   }
 
