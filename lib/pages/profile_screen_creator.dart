@@ -18,6 +18,7 @@ import 'package:multi-book-app/profileScreenWidget/button_widget.dart';
 import 'package:multi-book-app/profileScreenWidget/numbers_widget.dart';
 import 'package:multi-book-app/profileScreenWidget/profile_widget.dart';
 import 'package:multi-book-app/pages/edit_creator_profile_page.dart';
+import 'package:multi-book-app/pages/lib_screen.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -52,7 +53,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: 24),
                   buildName(creator),
                   const SizedBox(height: 24),
-                  Center(child: buildUpgradeButton()),
+                  Center(child: buildUpgradeButton(context)),
                   const SizedBox(height: 24),
                   NumbersWidget(),
                   const SizedBox(height: 48),
@@ -123,10 +124,17 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       );
 
-  Widget buildUpgradeButton() => ButtonWidget(
+  Widget buildUpgradeButton(context) => ButtonWidget(
         text: 'My Library',
-        onClicked: () {},
+        onClicked: () async {
+          await Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => LibScreen()),
+          );
+          setState(() {});},
       );
+
+void setState(Null Function() param0) {
+}
 
   Widget buildAbout(Creator creator) => Container(
         padding: EdgeInsets.symmetric(horizontal: 48),
