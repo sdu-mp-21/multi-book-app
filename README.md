@@ -7,7 +7,8 @@ Team members\
 190103166 - Aziza Karzhaubayeva\
 190103200 - Sayan Baikeyev\
 190107063 - Rassul Bessimbekov\
-190103126 - Aziz Akilbekov
+190103126 - Aziz Akilbekov\
+https://docs.google.com/presentation/d/1d5p8BddzYGK1rZ6OCA0JyrKkoDMxYgPgVxX-g0Tp7vI/edit?usp=sharing for full understanding application
 
 # Multi book App
 We all know there are a lot of online book reading apps out there now, without the need for a physical copy. Our project is similar and at the same time different from typical online libraries. The fact that in online libraries you just read books, manga, listen to audio recordings, watch videos. And we decided to combine all this and add new features.
